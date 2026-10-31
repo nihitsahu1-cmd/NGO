@@ -89,15 +89,16 @@ textarea:focus-visible {
 .site-shell {
   max-width: 1500px;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: clip;
   background: var(--cream);
   padding: 22px 22px 0;
   box-shadow: 0 0 80px rgba(28, 54, 37, 0.08);
 }
 
 .navbar {
-  position: relative;
-  z-index: 5;
+  position: sticky;
+  top: 12px;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1528,6 +1529,7 @@ textarea:focus-visible {
 
   .navbar {
     min-height: 65px;
+    top: 8px;
     padding: 0 10px;
     border-radius: 16px;
   }
