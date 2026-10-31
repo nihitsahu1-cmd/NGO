@@ -6,33 +6,28 @@ import FloatingActions from "./components/FloatingActions.jsx";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import logo from "../logo.jpg";
+import { TRANSLATIONS } from "./translations.js";
 
-function GetInvolved() {
-  const actions = [
-    { icon: "♧", title: "Find a program", detail: "Discover ways to help" },
-    { icon: "⌖", title: "Volunteer locally", detail: "Make an impact nearby" },
-    { icon: "♡", title: "Support a cause", detail: "Every contribution matters" },
-  ];
-
+function GetInvolved({ copy }) {
   return (
-    <section className="quick-search" aria-label="Get involved">
-      {actions.map((action) => (
+    <section className="quick-search" aria-label={copy.label}>
+      {copy.actions.map((action, index) => (
         <div className="quick-item" key={action.title}>
-          <span className="quick-icon" aria-hidden="true">{action.icon}</span>
+          <span className="quick-icon" aria-hidden="true">{["♧", "⌖", "♡"][index]}</span>
           <div><strong>{action.title}</strong><small>{action.detail}</small></div>
         </div>
       ))}
-      <a className="button button-green" href="#contact">Get involved <span aria-hidden="true">↗</span></a>
+      <a className="button button-green" href="#contact">{copy.label} <span aria-hidden="true">↗</span></a>
     </section>
   );
 }
 
-function Programs({ programs }) {
+function Programs({ programs, copy }) {
   return (
     <section className="programs section" id="programs">
       <div className="section-heading">
-        <div><span className="section-kicker">Our focus areas</span><h2>Opportunity in action</h2></div>
-        <p>Practical programs helping children, families, and communities thrive.</p>
+        <div><span className="section-kicker">{copy.kicker}</span><h2>{copy.title}</h2></div>
+        <p>{copy.description}</p>
       </div>
       <div className="program-grid">
         {programs.map((program) => (
@@ -53,13 +48,13 @@ function Programs({ programs }) {
   );
 }
 
-function Initiatives({ initiatives, branches }) {
+function Initiatives({ initiatives, branches, copy }) {
   return (
     <>
       <section className="initiatives section" id="initiatives">
         <div className="section-heading">
-          <div><span className="section-kicker">Beyond our core programs</span><h2>Showing up for our community</h2></div>
-          <p>Local campaigns and community activities documented by the organization.</p>
+          <div><span className="section-kicker">{copy.initiatives.kicker}</span><h2>{copy.initiatives.title}</h2></div>
+          <p>{copy.initiatives.description}</p>
         </div>
         <div className="initiative-grid">
           {initiatives.map((initiative) => (
@@ -73,14 +68,15 @@ function Initiatives({ initiatives, branches }) {
       </section>
       <section className="branches section" aria-labelledby="branches-title">
         <div className="section-heading">
-          <div><span className="section-kicker">Across Prayagraj</span><h2 id="branches-title">Free learning centers</h2></div>
-          <p>The brochure lists six community learning branches serving local children.</p>
+          <div><span className="section-kicker">{copy.branches.kicker}</span><h2 id="branches-title">{copy.branches.title}</h2></div>
+          <p>{copy.branches.description}</p>
         </div>
         <div className="branch-grid">
           {branches.map((branch) => (
-            <div className="branch-card" key={branch.name}>
-              <strong>{branch.name}</strong><span>{branch.location}</span>
-            </div>
+            <article className="branch-card" key={branch.name}>
+              <span className="branch-card-icon" aria-hidden="true">⌖</span>
+              <div><strong>{branch.name}</strong><span>{branch.location}</span></div>
+            </article>
           ))}
         </div>
       </section>
@@ -88,12 +84,12 @@ function Initiatives({ initiatives, branches }) {
   );
 }
 
-function Gallery({ images }) {
+function Gallery({ images, copy }) {
   return (
     <section className="gallery section" id="gallery">
       <div className="section-heading">
-        <div><span className="section-kicker">Real work, real change</span><h2>Our community in action</h2></div>
-        <p>Photos from Swadesh Seva Sansthan's education programs and community events.</p>
+      <div><span className="section-kicker">{copy.kicker}</span><h2>{copy.title}</h2></div>
+      <p>{copy.description}</p>
       </div>
       <div className="gallery-grid">
         {images.map((item) => (
@@ -106,12 +102,12 @@ function Gallery({ images }) {
   );
 }
 
-function Impact({ impact }) {
+function Impact({ impact, copy }) {
   return (
     <section className="impact section" id="impact">
       <div className="impact-heading">
-        <span className="section-kicker">The change we work toward</span>
-        <h2>A stronger future<br /><em>for every community.</em></h2>
+        <span className="section-kicker">{copy.kicker}</span>
+        <h2>{copy.title}<br /><em>{copy.emphasis}</em></h2>
       </div>
       <div className="stats-grid">
         {impact.map((item) => (
@@ -124,20 +120,20 @@ function Impact({ impact }) {
   );
 }
 
-function Donation({ donation }) {
+function Donation({ donation, copy }) {
   return (
     <section className="donate section" id="donate">
       <div className="donate-copy">
-        <span className="section-kicker">Be part of the change</span>
-        <h2>Support our work<br /><em>for every community.</em></h2>
-        <p>Donations support free education and community programs for children and families in need.</p>
+        <span className="section-kicker">{copy.kicker}</span>
+        <h2>{copy.title}<br /><em>{copy.emphasis}</em></h2>
+        <p>{copy.description}</p>
         <div className="donation-details">
-          <strong>Bank transfer</strong>
+          <strong>{copy.bankTransfer}</strong>
           <span>{donation.accountName} · {donation.bank}</span>
-          <span>Account No. {donation.accountNumber}</span>
-          <span>IFSC: {donation.ifsc}</span>
+          <span>{copy.accountNumber} {donation.accountNumber}</span>
+          <span>{copy.ifsc} {donation.ifsc}</span>
         </div>
-        <a className="button button-light" href="#contact">Make a difference <span aria-hidden="true">↗</span></a>
+        <a className="button button-light" href="#contact">{copy.button} <span aria-hidden="true">↗</span></a>
       </div>
       <div className="donate-art" aria-hidden="true">
         <div className="sun" /><div className="leaf leaf-one">❧</div>
@@ -147,32 +143,70 @@ function Donation({ donation }) {
   );
 }
 
-function Footer({ site }) {
+function Footer({ site, copy }) {
   return (
     <footer className="footer">
       <a className="brand" href="#home" aria-label={`${site.name} home`}>
         <img className="brand-logo" src={logo} alt="" /><span>{site.name}</span>
       </a>
-      <p>Equal opportunity. Stronger communities.</p>
+      <p>{copy.motto}</p>
       <a className="footer-website" href={site.website} target="_blank" rel="noreferrer">swadeshsevasansthan.in</a>
-      <span className="footer-socials">Also on {site.socialPlatforms.join(" · ")}</span>
-      <span className="copyright">© {new Date().getFullYear()} {site.name} · Society Reg. {site.registration}</span>
+      <span className="footer-socials">{copy.socials} {site.socialPlatforms.join(" · ")}</span>
+      <span className="copyright">© {new Date().getFullYear()} {site.name} · {copy.registration} {site.registration}</span>
+      <span className="developer-credit">{copy.developer}</span>
     </footer>
   );
 }
 
 export default function App() {
-  const { site, programs, branches, initiatives, gallery, impact, donation } = NGO_DATA;
+  const [language, setLanguage] = useState("en");
   const [theme, setTheme] = useState("light");
+  const copy = TRANSLATIONS[language];
+  const site = {
+    ...NGO_DATA.site,
+    ...copy.site,
+    registration: NGO_DATA.site.registration,
+    website: NGO_DATA.site.website,
+    socialHandle: NGO_DATA.site.socialHandle,
+    socialUrl: NGO_DATA.site.socialUrl,
+    socialPlatforms: NGO_DATA.site.socialPlatforms,
+    phone: NGO_DATA.site.phone,
+    emails: NGO_DATA.site.emails,
+    heroImage: NGO_DATA.site.heroImage,
+    aboutImage: NGO_DATA.site.aboutImage,
+  };
+  const programs = NGO_DATA.programs.map((program, index) => ({
+    ...program,
+    ...copy.programs[index],
+  }));
+  const initiatives = copy.initiatives;
+  const branches = copy.branches;
+  const gallery = NGO_DATA.gallery.map((image, index) => ({
+    ...image,
+    alt: copy.galleryAlts[index],
+  }));
+  const impact = copy.impact;
+  const donation = {
+    ...NGO_DATA.donation,
+    ...copy.donation,
+    accountNumber: NGO_DATA.donation.accountNumber,
+    ifsc: NGO_DATA.donation.ifsc,
+  };
   const phoneNumber = site.phone.replace(/\D/g, "");
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
+    document.documentElement.lang = language;
+    document.title = copy.pageTitle;
+    document.querySelector('meta[name="description"]')?.setAttribute(
+      "content",
+      copy.pageDescription,
+    );
     document.querySelector('meta[name="theme-color"]')?.setAttribute(
       "content",
       theme === "dark" ? "#151c17" : "#fbfaf6",
     );
-  }, [theme]);
+  }, [theme, language, copy]);
 
   return (
     <>
@@ -181,21 +215,24 @@ export default function App() {
           name={site.name}
           theme={theme}
           onToggleTheme={() => setTheme((current) => current === "light" ? "dark" : "light")}
+          language={language}
+          onToggleLanguage={() => setLanguage((current) => current === "en" ? "hi" : "en")}
+          copy={copy}
         />
         <main>
-          <Hero site={site} />
-          <GetInvolved />
-          <About site={site} />
-          <Programs programs={programs} />
-          <Initiatives initiatives={initiatives} branches={branches} />
-          <Gallery images={gallery} />
-          <Impact impact={impact} />
-          <Donation donation={donation} />
-          <Contact site={site} />
+          <Hero site={site} copy={copy.hero} />
+          <GetInvolved copy={copy.getInvolved} />
+          <About site={site} copy={copy.about} />
+          <Programs programs={programs} copy={copy.programsSection} />
+          <Initiatives initiatives={initiatives} branches={branches} copy={copy} />
+          <Gallery images={gallery} copy={copy.gallerySection} />
+          <Impact impact={impact} copy={copy.impactSection} />
+          <Donation donation={donation} copy={copy.donationSection} />
+          <Contact site={site} copy={copy.contact} />
         </main>
-        <Footer site={site} />
+        <Footer site={site} copy={copy.footer} />
       </div>
-      <FloatingActions phone={site.phone} whatsappNumber={phoneNumber} />
+      <FloatingActions phone={site.phone} whatsappNumber={phoneNumber} copy={copy.floating} />
     </>
   );
 }

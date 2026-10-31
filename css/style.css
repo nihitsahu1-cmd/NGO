@@ -36,6 +36,22 @@ html {
   scroll-padding-top: 24px;
 }
 
+:root[lang="hi"] body,
+:root[lang="hi"] button,
+:root[lang="hi"] input,
+:root[lang="hi"] select,
+:root[lang="hi"] textarea {
+  font-family: "Nirmala UI", "Noto Sans Devanagari", Mangal, sans-serif;
+}
+
+:root[lang="hi"] .brand,
+:root[lang="hi"] h1,
+:root[lang="hi"] h2,
+:root[lang="hi"] h3 {
+  font-family: "Nirmala UI", "Noto Sans Devanagari", Mangal, sans-serif;
+  letter-spacing: 0;
+}
+
 body {
   margin: 0;
   background: #edf1e9;
@@ -151,6 +167,13 @@ textarea:focus-visible {
   transform: translateY(-2px);
 }
 
+.header-tools {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+}
+
 .theme-toggle {
   display: grid;
   flex: 0 0 40px;
@@ -168,6 +191,24 @@ textarea:focus-visible {
 
 .theme-toggle:hover {
   transform: rotate(12deg);
+}
+
+.language-toggle {
+  min-width: 62px;
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--cream);
+  color: var(--green-dark);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.language-toggle:hover {
+  transform: translateY(-1px);
+  background: var(--green-soft);
 }
 
 .menu-toggle {
@@ -306,12 +347,16 @@ textarea:focus-visible {
   position: absolute;
   right: 4%;
   bottom: 30px;
+  transform: translateY(-200px);
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 13px 19px;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 16px;
+  gap: 16px;
+  min-width: 300px;
+  min-height: 108px;
+  padding: 20px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-left: 4px solid #719b75;
+  border-radius: 20px;
   background: rgba(255, 255, 252, 0.94);
   color: var(--ink);
   box-shadow: var(--shadow);
@@ -319,7 +364,14 @@ textarea:focus-visible {
 }
 
 .note-icon {
-  font-size: 25px;
+  display: grid;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 15px;
+  background: var(--green-soft);
+  font-size: 27px;
 }
 
 .hero-note strong,
@@ -328,12 +380,13 @@ textarea:focus-visible {
 }
 
 .hero-note strong {
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 800;
 }
 
 .hero-note small {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .quick-search {
@@ -397,6 +450,7 @@ textarea:focus-visible {
   align-items: center;
   gap: 9%;
   padding-top: 105px;
+  padding-bottom: 200px;
 }
 
 .about-image-wrap {
@@ -495,18 +549,109 @@ textarea:focus-visible {
   color: var(--ink);
 }
 
-.founder-note {
+.founder-message {
   display: grid;
-  gap: 4px;
-  margin: 20px 0;
-  padding: 14px 16px;
-  border-radius: 12px;
-  background: var(--green-soft);
-  font-size: 12px;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(250px, 320px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 52px);
+  width: 100%;
+  min-width: 0;
+  height: 500px;
+  margin: 0;
+  padding: 24px clamp(24px, 4vw, 56px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at 100% 0, rgba(113, 155, 117, 0.12), transparent 44%),
+    var(--green-soft);
+  box-shadow: var(--shadow-soft);
 }
 
-.founder-note span {
+.founder-photo {
+  display: block;
+  width: 100%;
+  height: 448px;
+  border: 4px solid var(--cream);
+  border-radius: 18px;
+  object-fit: cover;
+  object-position: center 24%;
+  box-shadow: 0 12px 28px rgba(27, 55, 37, 0.16);
+}
+
+.founder-message-content {
+  min-width: 0;
+}
+
+.founder-message-kicker {
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.founder-message-content h3 {
+  margin: 8px 0 18px;
+  color: var(--ink);
+  font: 800 clamp(22px, 2.4vw, 30px) / 1.3 Manrope, sans-serif;
+}
+
+.founder-message-content blockquote {
+  max-width: 850px;
+  margin: 0;
+  padding-left: 18px;
+  border-left: 3px solid var(--green);
   color: var(--muted);
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.founder-message-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+  color: var(--green-dark);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.founder-message-cta:hover {
+  text-decoration: underline;
+}
+
+:root[lang="hi"] .founder-message-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@media (max-width: 640px) {
+  .founder-message {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    height: auto;
+    min-height: 0;
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .founder-photo {
+    width: 100%;
+    height: clamp(220px, 70vw, 320px);
+    border-width: 3px;
+    border-radius: 14px;
+  }
+
+  .founder-message-content h3 {
+    font-size: 20px;
+  }
+
+  .founder-message-content blockquote {
+    font-size: 14px;
+    line-height: 1.75;
+  }
 }
 
 .check-list {
@@ -542,8 +687,9 @@ textarea:focus-visible {
 }
 
 .branches {
-  padding-top: 20px;
-  background: var(--cream);
+  padding-top: 50px;
+  padding-bottom: 60px;
+  background: #f0f4eb;
 }
 
 .initiative-grid {
@@ -579,15 +725,45 @@ textarea:focus-visible {
 .branch-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 16px;
 }
 
 .branch-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #dfe8d9;
+  border-radius: 16px;
+  background: #fffefa;
+  box-shadow: var(--shadow-soft);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.branch-card:hover {
+  transform: translateY(-3px);
+  border-color: #b5c99c;
+  box-shadow: var(--shadow);
+}
+
+.branch-card .branch-card-icon {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 13px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.branch-card > div {
   display: grid;
   gap: 3px;
-  padding: 16px 18px;
-  border-left: 2px solid #b5c99c;
-  background: linear-gradient(90deg, rgba(231, 239, 228, 0.55), transparent);
+  min-width: 0;
 }
 
 .branch-card strong {
@@ -632,13 +808,22 @@ textarea:focus-visible {
 
 :root[data-theme="dark"] .initiatives,
 :root[data-theme="dark"] .branches {
-  background: var(--cream);
+  background: #1d2920;
 }
 
 :root[data-theme="dark"] .initiative-card,
 :root[data-theme="dark"] .gallery {
   border-color: var(--line);
   background: #1d2920;
+}
+
+:root[data-theme="dark"] .branch-card {
+  border-color: var(--line);
+  background: #202a22;
+}
+
+:root[data-theme="dark"] .branch-card:hover {
+  border-color: #719b75;
 }
 
 .donation-details {
@@ -930,6 +1115,15 @@ textarea:focus-visible {
 .contact-form {
   display: grid;
   gap: 14px;
+  align-content: start;
+  padding: clamp(22px, 3vw, 36px);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--green);
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 100% 0, rgba(113, 155, 117, 0.1), transparent 42%),
+    #fffefa;
+  box-shadow: var(--shadow);
 }
 
 .contact-form label {
@@ -984,25 +1178,44 @@ textarea:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 24px 8%;
-  border-top: 1px solid var(--line);
+  padding: 30px 8% 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  background: #193d2b;
+  color: #edf2eb;
+}
+
+.footer .brand {
+  color: #fff;
 }
 
 .footer p,
 .copyright {
-  color: var(--muted);
+  color: #c3d0c3;
   font-size: 11px;
 }
 
 .footer-website {
-  color: var(--green);
+  color: #c4dca6;
   font-size: 11px;
   text-decoration: none;
 }
 
+.footer-website:hover {
+  color: #fff;
+}
+
 .footer-socials {
-  color: var(--muted);
+  color: #c3d0c3;
   font-size: 11px;
+}
+
+.developer-credit {
+  width: 100%;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  color: #c3d0c3;
+  font-size: 11px;
+  text-align: center;
 }
 
 .floating-actions {
@@ -1106,6 +1319,12 @@ textarea:focus-visible {
   color: var(--ink);
 }
 
+:root[data-theme="dark"] .contact-form {
+  border-color: var(--line);
+  border-top-color: #719b75;
+  background: #1d2920;
+}
+
 :root[data-theme="dark"] .contact-form input::placeholder,
 :root[data-theme="dark"] .contact-form textarea::placeholder {
   color: #9aa79b;
@@ -1131,22 +1350,59 @@ textarea:focus-visible {
     height: 40px;
   }
 
+  .menu-toggle {
+    display: block;
+    margin-right: 10px;
+    margin-left: auto;
+  }
+
   .nav-links {
-    gap: 12px;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    display: none;
+    width: min(340px, 100%);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 10px 20px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--cream);
+    box-shadow: var(--shadow);
   }
 
   .nav-links a {
-    font-size: 11px;
+    padding: 10px 5px;
+    font-size: 13px;
+  }
+
+  .nav-links.open {
+    display: flex;
   }
 
   .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
     min-height: clamp(520px, 68vw, 590px);
   }
 
   .hero-content {
+    width: 100%;
     max-width: 640px;
-    padding-right: 7%;
-    padding-left: 7%;
+    padding: 40px 7% 0;
+  }
+
+  .hero-note {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    align-self: flex-end;
+    margin: 24px 4% 24px;
+    transform: none;
   }
 
   .hero h1 {
@@ -1168,6 +1424,10 @@ textarea:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .branch-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1176,6 +1436,22 @@ textarea:focus-visible {
     gap: 6%;
     padding-right: 6%;
     padding-left: 6%;
+  }
+
+  .founder-message {
+    height: auto;
+    min-height: 380px;
+    gap: 24px;
+    padding: 20px 26px;
+  }
+
+  .founder-photo {
+    height: 336px;
+  }
+
+  .founder-message-content blockquote {
+    font-size: 14px;
+    line-height: 1.75;
   }
 
   .section {
@@ -1227,11 +1503,15 @@ textarea:focus-visible {
     padding: 9px 12px;
   }
 
+  .language-toggle {
+    min-width: 58px;
+    padding: 8px 10px;
+  }
+
   .theme-toggle {
     flex-basis: 36px;
     width: 36px;
     height: 36px;
-    margin-right: 6px;
   }
 
   .nav-cta span {
@@ -1247,6 +1527,7 @@ textarea:focus-visible {
     top: 65px;
     right: 0;
     left: 0;
+    width: auto;
     display: none;
     flex-direction: column;
     align-items: stretch;
@@ -1281,7 +1562,7 @@ textarea:focus-visible {
 
   .hero-content {
     width: 100%;
-    padding: 40px 6% 112px;
+    padding: 40px 6% 0;
   }
 
   .eyebrow {
@@ -1322,20 +1603,30 @@ textarea:focus-visible {
   }
 
   .hero-note {
-    right: auto;
-    bottom: 14px;
-    left: 6%;
+    align-self: flex-start;
+    margin: 22px 6% 24px;
     max-width: 88%;
-    gap: 9px;
-    padding: 9px 13px;
+    min-width: 0;
+    min-height: 88px;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 17px;
+  }
+
+  .note-icon {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 23px;
   }
 
   .hero-note strong {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .hero-note small {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .quick-search {
@@ -1368,6 +1659,31 @@ textarea:focus-visible {
     padding-top: 75px;
   }
 
+  .founder-message {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    height: auto;
+    min-height: 0;
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .founder-photo {
+    width: 100%;
+    height: clamp(220px, 70vw, 320px);
+    border-width: 3px;
+    border-radius: 14px;
+  }
+
+  .founder-message-content h3 {
+    font-size: 20px;
+  }
+
+  .founder-message-content blockquote {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
   .about-image {
     height: 300px;
   }
@@ -1382,6 +1698,10 @@ textarea:focus-visible {
   .section {
     padding-top: 65px;
     padding-bottom: 65px;
+  }
+
+  .about {
+    padding-bottom: 200px;
   }
 
   .section-heading {
@@ -1446,7 +1766,8 @@ textarea:focus-visible {
   .footer p,
   .copyright,
   .footer-website,
-  .footer-socials {
+  .footer-socials,
+  .developer-credit {
     width: 100%;
   }
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import logo from "../../logo.jpg";
 
-export default function Header({ name, theme, onToggleTheme }) {
+export default function Header({ name, theme, onToggleTheme, language, onToggleLanguage, copy }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
 
@@ -14,33 +14,41 @@ export default function Header({ name, theme, onToggleTheme }) {
       <button
         className="menu-toggle"
         type="button"
-        aria-label="Toggle navigation"
+        aria-label={copy.menuLabel}
         aria-controls="navLinks"
         aria-expanded={menuOpen}
         onClick={() => setMenuOpen((open) => !open)}
       >
         ☰
       </button>
-      <nav className={`nav-links${menuOpen ? " open" : ""}`} id="navLinks" aria-label="Main navigation">
-        <a href="#home" onClick={closeMenu}>Home</a>
-        <a href="#about" onClick={closeMenu}>About</a>
-        <a href="#programs" onClick={closeMenu}>Programs</a>
-        <a href="#initiatives" onClick={closeMenu}>Our Work</a>
-        <a href="#gallery" onClick={closeMenu}>Gallery</a>
-        <a href="#impact" onClick={closeMenu}>Our Impact</a>
-        <a href="#contact" onClick={closeMenu}>Contact</a>
+      <nav className={`nav-links${menuOpen ? " open" : ""}`} id="navLinks" aria-label={copy.navigationLabel}>
+        {copy.navigation.map((label, index) => (
+          <a href={["#home", "#about", "#programs", "#initiatives", "#gallery", "#impact", "#contact"][index]} onClick={closeMenu} key={label}>
+            {label}
+          </a>
+        ))}
       </nav>
-      <button
-        className="theme-toggle"
-        type="button"
-        aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-        aria-pressed={theme === "dark"}
-        onClick={onToggleTheme}
-      >
-        <span aria-hidden="true">{theme === "light" ? "☾" : "☀"}</span>
-      </button>
+      <div className="header-tools">
+        <button
+          className="language-toggle"
+          type="button"
+          aria-label={language === "en" ? "वेबसाइट हिंदी में देखें" : "View website in English"}
+          onClick={onToggleLanguage}
+        >
+          {copy.switchLanguage}
+        </button>
+        <button
+          className="theme-toggle"
+          type="button"
+          aria-label={`${copy.themeLabel} ${theme === "light" ? copy.darkMode : copy.lightMode}`}
+          aria-pressed={theme === "dark"}
+          onClick={onToggleTheme}
+        >
+          <span aria-hidden="true">{theme === "light" ? "☾" : "☀"}</span>
+        </button>
+      </div>
       <a className="nav-cta" href="#donate" onClick={closeMenu}>
-        <span aria-hidden="true">♥</span> <span>Donate</span>
+        <span aria-hidden="true">♥</span> <span>{copy.donateShort}</span>
       </a>
     </header>
   );

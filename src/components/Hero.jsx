@@ -1,11 +1,11 @@
 import Arrow from "./Arrow.jsx";
 
-export default function Hero({ site }) {
+export default function Hero({ site, copy }) {
   return (
     <section className="hero" id="home" style={{ "--hero-image": `url("${site.heroImage}")` }}>
       <div className="hero-overlay" />
       <div className="hero-content">
-        <span className="eyebrow"><span aria-hidden="true">✦</span> Swadesh Seva Sansthan · Prayagraj</span>
+        <span className="eyebrow"><span aria-hidden="true">✦</span> {site.eyebrow}</span>
         <h1>
           {site.heroTitle.split("\n").map((line, index) => (
             <span key={`${index}-${line}`}>
@@ -17,13 +17,13 @@ export default function Hero({ site }) {
         <p>{site.heroText}</p>
         <p className="hero-motto">{site.motto}</p>
         <div className="hero-actions">
-          <a className="button button-light" href="#programs">Explore our work <Arrow /></a>
-          <a className="text-link" href="#about">Discover our story <span aria-hidden="true">→</span></a>
+          <a className="button button-light" href="#programs">{copy.explore} <Arrow /></a>
+          <a className="text-link" href="#about">{copy.story} <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div className="hero-note">
         <span className="note-icon" aria-hidden="true">🌱</span>
-        <span><strong>One community at a time</strong><small>Growing change that lasts</small></span>
+        <span><strong>{copy.noteTitle}</strong><small>{copy.noteDetail}</small></span>
       </div>
     </section>
   );

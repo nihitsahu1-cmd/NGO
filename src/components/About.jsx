@@ -1,37 +1,45 @@
 import Arrow from "./Arrow.jsx";
 
-export default function About({ site }) {
+export default function About({ site, copy }) {
   return (
     <section className="about section" id="about">
       <div className="about-image-wrap">
         <img
           className="about-image"
           src={site.aboutImage}
-          alt="Children gathered for a Swadesh Seva Sansthan education program"
+          alt={copy.imageAlt}
           loading="lazy"
         />
-        <div className="round-stamp"><span aria-hidden="true">✦</span><small>Serving<br />since 2018</small></div>
-        <div className="image-caption"><span aria-hidden="true">♡</span><strong>Education and care<br />for every child.</strong></div>
+        <div className="round-stamp"><span aria-hidden="true">✦</span><small>{copy.stamp[0]}<br />{copy.stamp[1]}</small></div>
+        <div className="image-caption"><span aria-hidden="true">♡</span><strong>{copy.caption[0]}<br />{copy.caption[1]}</strong></div>
       </div>
       <div className="about-copy">
-        <span className="section-kicker">Who we are</span>
+        <span className="section-kicker">{copy.kicker}</span>
         <h2>
           {site.aboutTitle.firstLine}<br />
           {site.aboutTitle.secondLine} <em>{site.aboutTitle.emphasis}</em>
         </h2>
         <p>{site.aboutText}</p>
-        <p className="registration-note"><strong>Society Registration:</strong> {site.registration}</p>
+        <p className="registration-note"><strong>{copy.registration}</strong> {site.registration}</p>
         <ul className="check-list">
-          <li>Education and career opportunities for children and youth</li>
-          <li>Accessible healthcare, nutrition, and wellness awareness</li>
-          <li>Skills and livelihood support for inclusive communities</li>
+          {copy.points.map((point) => <li key={point}>{point}</li>)}
         </ul>
-        <div className="founder-note">
-          <strong>Founder: {site.founder}</strong>
-          <span>{site.founderNote}</span>
-        </div>
-        <a className="button button-green" href="#contact">Learn about us <Arrow /></a>
+        <a className="button button-green" href="#contact">{copy.button} <Arrow /></a>
       </div>
+      <section className="founder-message" aria-labelledby="founder-message-title">
+        <img
+          className="founder-photo"
+          src={site.founderImage}
+          alt={copy.founderImageAlt}
+          loading="lazy"
+        />
+        <div className="founder-message-content">
+          <span className="founder-message-kicker">{copy.founderMessageTitle}</span>
+          <h3 id="founder-message-title">{site.founder}</h3>
+          <blockquote>{copy.founderMessage}</blockquote>
+          <a className="founder-message-cta" href="#donate">{copy.supportMessage} <Arrow /></a>
+        </div>
+      </section>
     </section>
   );
 }

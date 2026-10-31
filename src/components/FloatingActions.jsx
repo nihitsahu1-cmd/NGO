@@ -1,12 +1,12 @@
-export default function FloatingActions({ phone, whatsappNumber }) {
+export default function FloatingActions({ phone, whatsappNumber, copy }) {
   return (
-    <nav className="floating-actions" aria-label="Quick contact and navigation">
+    <nav className="floating-actions" aria-label={copy.navigation}>
       <a
         className="floating-action whatsapp-action"
         href={`https://wa.me/${whatsappNumber}`}
         target="_blank"
         rel="noreferrer"
-        aria-label="Chat with us on WhatsApp"
+        aria-label={copy.whatsapp}
         title="WhatsApp"
       >
         <svg
@@ -22,16 +22,16 @@ export default function FloatingActions({ phone, whatsappNumber }) {
       <a
         className="floating-action call-action"
         href={`tel:${phone.replace(/[^\d+]/g, "")}`}
-        aria-label={`Call us at ${phone}`}
-        title="Call us"
+        aria-label={`${copy.call}: ${phone}`}
+        title={copy.call}
       >
         <span aria-hidden="true">☎</span>
       </a>
       <a
         className="floating-action top-action"
         href="#home"
-        aria-label="Back to top"
-        title="Back to top"
+        aria-label={copy.top}
+        title={copy.top}
       >
         <span aria-hidden="true">↑</span>
       </a>
