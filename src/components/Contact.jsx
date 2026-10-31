@@ -44,19 +44,26 @@ export default function Contact({ site, copy }) {
             </div>
           </div>
         </div>
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <label>{copy.name}<input name="name" required placeholder={copy.namePlaceholder} /></label>
-          <label>{copy.emailLabel}<input name="email" type="email" required placeholder={copy.emailPlaceholder} /></label>
-          <label>
-            {copy.interestLabel}
-            <select name="interest">
-              {copy.interests.map((interest) => <option key={interest}>{interest}</option>)}
-            </select>
-          </label>
-          <label>{copy.message}<textarea name="message" rows="3" placeholder={copy.messagePlaceholder} /></label>
-          <button className="button button-green" type="submit">{copy.submit} <Arrow /></button>
-          <p className="form-note" role="status">{formNote}</p>
-        </form>
+        <div className="contact-form-card">
+          <div className="contact-form-heading">
+            <span className="section-kicker">{copy.formKicker}</span>
+            <h3>{copy.formTitle}</h3>
+            <p>{copy.formDescription}</p>
+          </div>
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <label>{copy.name}<input name="name" required placeholder={copy.namePlaceholder} /></label>
+            <label>{copy.emailLabel}<input name="email" type="email" required placeholder={copy.emailPlaceholder} /></label>
+            <label>
+              {copy.interestLabel}
+              <select name="interest">
+                {copy.interests.map((interest) => <option key={interest}>{interest}</option>)}
+              </select>
+            </label>
+            <label>{copy.message}<textarea name="message" rows="3" placeholder={copy.messagePlaceholder} /></label>
+            <button className="button button-green" type="submit">{copy.submit} <Arrow /></button>
+            <p className="form-note" role="status">{formNote}</p>
+          </form>
+        </div>
       </div>
     </section>
   );
