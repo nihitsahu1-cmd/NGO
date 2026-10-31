@@ -26,20 +26,6 @@ export default function About({ site, copy }) {
         </ul>
         <a className="button button-green" href="#contact">{copy.button} <Arrow /></a>
       </div>
-      <section className="founder-message" aria-labelledby="founder-message-title">
-        <img
-          className="founder-photo"
-          src={site.founderImage}
-          alt={copy.founderImageAlt}
-          loading="lazy"
-        />
-        <div className="founder-message-content">
-          <span className="founder-message-kicker">{copy.founderMessageTitle}</span>
-          <h3 id="founder-message-title">{site.founder}</h3>
-          <blockquote>{copy.founderMessage}</blockquote>
-          <a className="founder-message-cta" href="#donate">{copy.supportMessage} <Arrow /></a>
-        </div>
-      </section>
     </section>
   );
 }

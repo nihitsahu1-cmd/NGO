@@ -2,7 +2,6 @@ import heroOne from "../hero1.png";
 import heroTwo from "../hero2.png";
 import heroThree from "../hero3.jpeg";
 import heroFour from "../hero4.jpeg";
-import founderPhoto from "../founder.jpeg";
 
 export const NGO_DATA = {
   site: {
@@ -19,8 +18,6 @@ export const NGO_DATA = {
     aboutText:
       "Swadesh Seva Sansthan is a Prayagraj-based nonprofit that grew from Swadesh Yuva Shakti, formed in 2018, and was registered as a society on 17 December 2020. The organization works with local communities to make education, healthcare, dignity, and opportunity more accessible.",
     registration: "06536/2020-21",
-    founder: "Sachin Singh 'Rajkumar'",
-    founderImage: founderPhoto,
     website: "https://swadeshsevasansthan.in",
     socialHandle: "@SSS_swadesh_NGO",
     socialUrl: "https://x.com/SSS_swadesh_NGO",

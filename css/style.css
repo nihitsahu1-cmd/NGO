@@ -451,7 +451,6 @@ textarea:focus-visible {
   align-items: center;
   gap: 9%;
   padding-top: 105px;
-  padding-bottom: 200px;
 }
 
 .about-image-wrap {
@@ -548,111 +547,6 @@ textarea:focus-visible {
 
 .registration-note strong {
   color: var(--ink);
-}
-
-.founder-message {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: minmax(250px, 320px) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(24px, 4vw, 52px);
-  width: 100%;
-  min-width: 0;
-  height: 500px;
-  margin: 0;
-  padding: 24px clamp(24px, 4vw, 56px);
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  background:
-    radial-gradient(ellipse at 100% 0, rgba(113, 155, 117, 0.12), transparent 44%),
-    var(--green-soft);
-  box-shadow: var(--shadow-soft);
-}
-
-.founder-photo {
-  display: block;
-  width: 100%;
-  height: 448px;
-  border: 4px solid var(--cream);
-  border-radius: 18px;
-  object-fit: cover;
-  object-position: center 24%;
-  box-shadow: 0 12px 28px rgba(27, 55, 37, 0.16);
-}
-
-.founder-message-content {
-  min-width: 0;
-}
-
-.founder-message-kicker {
-  color: var(--green);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.founder-message-content h3 {
-  margin: 8px 0 18px;
-  color: var(--ink);
-  font: 800 clamp(22px, 2.4vw, 30px) / 1.3 Manrope, sans-serif;
-}
-
-.founder-message-content blockquote {
-  max-width: 850px;
-  margin: 0;
-  padding-left: 18px;
-  border-left: 3px solid var(--green);
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.9;
-}
-
-.founder-message-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 20px;
-  color: var(--green-dark);
-  font-size: 12px;
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.founder-message-cta:hover {
-  text-decoration: underline;
-}
-
-:root[lang="hi"] .founder-message-kicker {
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-@media (max-width: 640px) {
-  .founder-message {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
-    height: auto;
-    min-height: 0;
-    padding: 18px;
-    border-radius: 18px;
-  }
-
-  .founder-photo {
-    width: 100%;
-    height: clamp(220px, 70vw, 320px);
-    border-width: 3px;
-    border-radius: 14px;
-  }
-
-  .founder-message-content h3 {
-    font-size: 20px;
-  }
-
-  .founder-message-content blockquote {
-    font-size: 14px;
-    line-height: 1.75;
-  }
 }
 
 .check-list {
@@ -1490,22 +1384,6 @@ textarea:focus-visible {
     padding-left: 6%;
   }
 
-  .founder-message {
-    height: auto;
-    min-height: 380px;
-    gap: 24px;
-    padding: 20px 26px;
-  }
-
-  .founder-photo {
-    height: 336px;
-  }
-
-  .founder-message-content blockquote {
-    font-size: 14px;
-    line-height: 1.75;
-  }
-
   .section {
     padding-right: 6%;
     padding-left: 6%;
@@ -1725,31 +1603,6 @@ textarea:focus-visible {
     padding-top: 75px;
   }
 
-  .founder-message {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
-    height: auto;
-    min-height: 0;
-    padding: 18px;
-    border-radius: 18px;
-  }
-
-  .founder-photo {
-    width: 100%;
-    height: clamp(220px, 70vw, 320px);
-    border-width: 3px;
-    border-radius: 14px;
-  }
-
-  .founder-message-content h3 {
-    font-size: 20px;
-  }
-
-  .founder-message-content blockquote {
-    font-size: 14px;
-    line-height: 1.75;
-  }
-
   .about-image {
     height: 300px;
   }
@@ -1764,10 +1617,6 @@ textarea:focus-visible {
   .section {
     padding-top: 65px;
     padding-bottom: 65px;
-  }
-
-  .about {
-    padding-bottom: 200px;
   }
 
   .section-heading {
