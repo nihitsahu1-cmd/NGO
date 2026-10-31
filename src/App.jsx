@@ -152,6 +152,14 @@ function Footer({ site, copy }) {
       <p>{copy.motto}</p>
       <a className="footer-website" href={site.website} target="_blank" rel="noreferrer">swadeshsevasansthan.in</a>
       <span className="footer-socials">{copy.socials} {site.socialPlatforms.join(" · ")}</span>
+      <div className="footer-offices">
+        {site.offices.map((office) => (
+          <div className="footer-office" key={office.label}>
+            <strong>{office.label}:</strong>
+            <span>{office.address}</span>
+          </div>
+        ))}
+      </div>
       <span className="copyright">© {new Date().getFullYear()} {site.name} · {copy.registration} {site.registration}</span>
       <span className="developer-credit">{copy.developer}</span>
     </footer>
